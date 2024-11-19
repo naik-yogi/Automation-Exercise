@@ -31,7 +31,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test(description = "Verifying that values of name and email is as entered by user", priority = 2)
+    @Test(description = "Verifying that values of name and email is as entered by user", priority = 3)
     public void nameAndEmailVerify() {
         String tempName = register.getName();
         String tempEmail = register.getEmail();
