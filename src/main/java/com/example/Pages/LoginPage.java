@@ -31,12 +31,13 @@ public class LoginPage extends HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void signUp(String name, String emailAddress) {
+    public void signUp(String name, String emailAddress) throws InterruptedException {
         nameInput.sendKeys(name);
-        emailAddressLogin.sendKeys(emailAddress);
+        emailAddressSignIn.sendKeys(emailAddress);
         signUpButton.click();
         nameToVerify = name; // to validate name
         emailToVerify = emailAddress; // to validate email
+        Thread.sleep(5000);
     }
 
     public void login(String email, String password) {

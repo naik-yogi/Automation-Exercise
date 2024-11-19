@@ -1,22 +1,28 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeSuite
     public void setup() {
-        WebDriverManager.chromedriver().setup();
+        try {
+            WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://automationexercise.com/");
         driver.manage().window().maximize();
+        } catch (Exception e) {
+           e.printStackTrace();
+           throw new RuntimeException("Failed to initialize the browser.");
+        }
+        
     }
 
-    @AfterMethod
+    @AfterSuite
     public void closeBrowser() {
         if (driver != null) {
             driver.quit();
